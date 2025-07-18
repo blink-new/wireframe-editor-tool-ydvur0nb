@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 220 13% 28%;
+  --accent: 239 84% 67%;
+  --background: 210 20% 98%;
+  --dark-mode: 220 26% 14%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom wireframe styles */
+.wireframe-element {
+  transition: all 0.1s ease;
+}
+
+.wireframe-element:hover {
+  border-color: hsl(var(--accent)) !important;
+}
+
+.canvas-grid {
+  background-image: 
+    linear-gradient(rgb(55 65 81 / 10%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(55 65 81 / 10%) 1px, transparent 1px);
+}
+
+/* Smooth zoom transitions */
+.canvas-container {
+  transition: transform 0.2s ease;
+}
+
+/* Selection outline animation */
+@keyframes selection-pulse {
+  0%, 100% { border-color: hsl(var(--accent)); }
+  50% { border-color: hsl(var(--accent) / 60%); }
+}
+
+.selected-element {
+  animation: selection-pulse 2s infinite;
+}
